@@ -13,10 +13,12 @@
 var img1;
 var marginTop = 110;
 var marginSide = 250;
-var filter = false;
+//var filter = false;
+var grid = 25; // size of square that grid is divided by
 
 function preload() {
-  img1 = loadImage('mntn.png');
+ // img1 = loadImage('mntn.png');
+ img1 = loadImage('monroe.jpg'); // testing portrait like image since Close does mostly portraits
 }
 
 function setup() {
@@ -40,23 +42,23 @@ function mousePressed() { // setting up the page switch on mouse press
 function chuckIt() {
   ellipseMode(CENTER);
   rectMode(CENTER);
-  for (i = 250; i < 750; i = i + 25) { // img is located between 250–750 on the x axis of canvas
-    for (j = 110; j < 610; j = j + 25) { // img is located between 110–610 on the y axis of canvas
-      var a = img1.get(random(i - 250, i + 25 - 250), random(j - 110, j + 25 - 110));
-      var b = img1.get(random(i - 250, i + 25 - 250), random(j - 110, j + 25 - 110));
-      var c = img1.get(random(i - 250, i + 25 - 250), random(j - 110, j + 25 - 110));
-      var d = img1.get(random(i - 250, i + 25 - 250), random(j - 110, j + 25 - 110));
-      
+  for (i = 250; i < 750; i = i + grid) { // img is located between 250–750 on the x axis of canvas
+    for (j = 110; j < 610; j = j + grid) { // img is located between 110–610 on the y axis of canvas
+      var a = img1.get(random(i - 250, i + grid - 250), random(j - 110, j + grid - 110));
+      var b = img1.get(random(i - 250, i + grid - 250), random(j - 110, j + grid - 110));
+      var c = img1.get(random(i - 250, i + grid - 250), random(j - 110, j + grid - 110));
+      var d = img1.get(random(i - 250, i + grid - 250), random(j - 110, j + grid - 110));
+
 
       noStroke();
       fill(a);
-      rect(i + 12.5, j + 12.5, 25, 25, 5);
+      rect(i + 12.5, j + 12.5, grid, grid, 5);
       fill(b);
-      ellipse(i + 12.5, j + 12.5, 20, 20);
+      ellipse(i + 12.5, j + 12.5, grid - 5, grid - 5);
       fill(c);
-      ellipse(i + 12.5, j + 12.5, 15, 15);
+      ellipse(i + 12.5, j + 12.5, grid - 10, grid - 10);
       fill(d);
-      ellipse(i + 12.5, j + 12.5, 10, 10);
+      ellipse(i + 12.5, j + 12.5, grid - 15, grid - 15);
 
     }
   }
