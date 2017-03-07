@@ -20,9 +20,28 @@ var slider;
 
 
 function preload() {
-  // img1 = loadImage('mntn.png');
-  img1 = loadImage('../images/frieda.jpg'); // 
-  img2 = loadImage('../images/einstein.jpg')
+
+  img1 = loadImage('../images/einsteinWeb.jpg'); // larger photo 
+  img2 = loadImage('../images/friedaWeb.jpg'); // larger photo 
+  img3 = loadImage('../images/mandelaWeb.jpg'); // larger photo 
+  img4 = loadImage('../images/monroeWeb.jpg'); // larger photo 
+  img5 = loadImage('../images/obamaWeb.jpg'); // larger photo 
+  img6 = loadImage('../images/BowieWeb.jpg'); // larger photo 
+  
+  img7 = loadImage('../images/einsteinWebThumb.jpg'); // thumbnail for side gallery 
+  img8 = loadImage('../images/friedaWebThumb.jpg'); // thumbnail for side gallery
+  img9 = loadImage('../images/mandelaWebThumb.jpg'); // thumbnail for side gallery
+  img10 = loadImage('../images/monroeWebThumb.jpg'); // thumbnail for side gallery
+  img11 = loadImage('../images/obamaWebThumb.jpg'); // thumbnail for side gallery
+  img12 = loadImage('../images/BowieWeb.jpg'); // thumbnail for side gallery
+  
+  img13 = loadImage('../images/chuckProcess.jpg'); // bio photo
+  img14 = loadImage('../images/chuckPhotoCropped.jpg'); // comparison1 photo for page after bio
+  img15 = loadImage('../images/chuckPaintingCropped.jpg'); // comparison2 photo for page after bio
+  
+  img16 = loadImage('../images/chuckItRed.png'); // logo for landing page (may choose to use logo w/ description instead)
+  
+
 }
 
 function setup() {
