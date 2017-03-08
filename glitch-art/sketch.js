@@ -10,37 +10,39 @@
 
 */
 
-var img1;
+//var img1;
 var marginTop = 110;
 var marginSide = 250;
 //var filter = false;
 var grid; // size of square that grid is divided by
 var slider;
+var imgS = 100; // small image size
+var imgB = 500; // large image size
 
 
 
 function preload() {
 
-  img1 = loadImage('../images/einsteinWeb.jpg'); // larger photo 
-  img2 = loadImage('../images/friedaWeb.jpg'); // larger photo 
-  img3 = loadImage('../images/mandelaWeb.jpg'); // larger photo 
-  img4 = loadImage('../images/monroeWeb.jpg'); // larger photo 
-  img5 = loadImage('../images/obamaWeb.jpg'); // larger photo 
-  img6 = loadImage('../images/BowieWeb.jpg'); // larger photo 
-  
-  img7 = loadImage('../images/einsteinWebThumb.jpg'); // thumbnail for side gallery 
-  img8 = loadImage('../images/friedaWebThumb.jpg'); // thumbnail for side gallery
-  img9 = loadImage('../images/mandelaWebThumb.jpg'); // thumbnail for side gallery
-  img10 = loadImage('../images/monroeWebThumb.jpg'); // thumbnail for side gallery
-  img11 = loadImage('../images/obamaWebThumb.jpg'); // thumbnail for side gallery
-  img12 = loadImage('../images/BowieWeb.jpg'); // thumbnail for side gallery
-  
+  img1 = loadImage('../images/friedaWeb.jpg'); // larger photo 
+  img2 = loadImage('../images/mandelaWeb.jpg'); // larger photo 
+  img3 = loadImage('../images/monroeWeb.jpg'); // larger photo 
+  img4 = loadImage('../images/obamaWeb.jpg'); // larger photo 
+  img5 = loadImage('../images/BowieWeb.jpg'); // larger photo 
+  img6 = loadImage('../images/einsteinWeb.jpg'); // larger photo 
+
+  img7 = loadImage('../images/friedaWebThumb.jpg'); // thumbnail for side gallery
+  img8 = loadImage('../images/mandelaWebThumb.jpg'); // thumbnail for side gallery
+  img9 = loadImage('../images/monroeWebThumb.jpg'); // thumbnail for side gallery
+  img10 = loadImage('../images/obamaWebThumb.jpg'); // thumbnail for side gallery
+  img11 = loadImage('../images/BowieWeb.jpg'); // thumbnail for side gallery
+  img12 = loadImage('../images/einsteinWebThumb.jpg'); // thumbnail for side gallery 
+
   img13 = loadImage('../images/chuckProcess.jpg'); // bio photo
   img14 = loadImage('../images/chuckPhotoCropped.jpg'); // comparison1 photo for page after bio
   img15 = loadImage('../images/chuckPaintingCropped.jpg'); // comparison2 photo for page after bio
-  
+
   img16 = loadImage('../images/chuckItRed.png'); // logo for landing page (may choose to use logo w/ description instead)
-  
+
 
 }
 
@@ -48,7 +50,13 @@ function setup() {
   createCanvas(1000, 720);
   imageMode(CENTER);
   background(245, 245, 245);
-  image(img2, width / 2, height / 2, 500, 500);
+  image(img7, width / 6 + 15, marginTop + 50, imgS, imgS);
+  image(img8, width / 6 + 15, marginTop + 150, imgS, imgS);
+  image(img9, width / 6 + 15, marginTop + 250, imgS, imgS);
+  image(img10, width / 6 + 15, marginTop + 350, imgS, imgS);
+  image(img11, width / 6 + 15, marginTop + 450, imgS, imgS);
+  // image(img12, imgS, imgS);
+  image(img1, width / 2, height / 2, imgB, imgB); // main image
   slider = createSlider(10, 50, 20, 10); // (min, max, [default value], [step]) 
   slider.position(width - marginSide + 50, marginTop + 80);
   textAlign(CENTER, CENTER);
@@ -58,13 +66,29 @@ function setup() {
 }
 
 function draw() {
-  background(220);
   fill(0);
   text("abstraction", width - marginSide + 120, marginTop + 120);
-
   grid = slider.value();
   filterBoxes(width - marginSide + 50, marginTop); // draw button 
-  //chuckIt();
+  ellipseMode(CENTER);
+  rectMode(CENTER);
+
+}
+
+// function mousePressed() { // setting up the page switch on mouse press
+//   page = (page + 1) % 6;
+// }
+
+// chuck-its the image
+function mousePressed() {
+
+  if (mouseX > width - marginSide + 50 && mouseX < width - marginSide + 50 + 130 && mouseY > marginTop && mouseY < marginTop + 40) { // checks if mouse is within buttom dimensions
+    //page = (page + 1) % 6; // switches pages
+    chuckIt();
+  }
+}
+
+function chuckIt() {
   ellipseMode(CENTER);
   rectMode(CENTER);
 
@@ -75,10 +99,10 @@ function draw() {
 
   for (i = 0; i < 500 / grid; i++) {
     for (j = 0; j < 500 / grid; j++) {
-      a = img2.get(random(grid * i, min(grid * i + grid, 500)), random(grid * j, min(grid * j + grid, 500)));
-      b = img2.get(random(grid * i, min(grid * i + grid, 500)), random(grid * j, min(grid * j + grid, 500)));
-      c = img2.get(random(grid * i, min(grid * i + grid, 500)), random(grid * j, min(grid * j + grid, 500)));
-      d = img2.get(random(grid * i, min(grid * i + grid, 500)), random(grid * j, min(grid * j + grid, 500)));
+      a = img1.get(random(grid * i, min(grid * i + grid, 500)), random(grid * j, min(grid * j + grid, 500)));
+      b = img1.get(random(grid * i, min(grid * i + grid, 500)), random(grid * j, min(grid * j + grid, 500)));
+      c = img1.get(random(grid * i, min(grid * i + grid, 500)), random(grid * j, min(grid * j + grid, 500)));
+      d = img1.get(random(grid * i, min(grid * i + grid, 500)), random(grid * j, min(grid * j + grid, 500)));
 
       noStroke();
       fill(a);
@@ -89,44 +113,6 @@ function draw() {
       ellipse(250 + grid / 2 + i * grid, 110 + grid / 2 + j * grid, grid - 10, grid - 10);
       fill(d);
       ellipse(250 + grid / 2 + i * grid, 110 + grid / 2 + j * grid, grid - 15, grid - 15);
-    }
-  }
-}
-
-function mousePressed() { // setting up the page switch on mouse press
-  page = (page + 1) % 6;
-}
-
-function chuckIt() {
-  ellipseMode(CENTER);
-  rectMode(CENTER);
-  var a;
-  var b;
-  var c;
-  var d;
-
-  for (i = 0; i < 500 / grid; i++) {
-    for (j = 0; j < 500 / grid; i++) {
-      a = img1.get(random(grid * i, grid * i + grid), random(grid * j, grid * j + grid));
-      b = img1.get(random(grid * i, grid * i + grid), random(grid * j, grid * j + grid));
-      c = img1.get(random(grid * i, grid * i + grid), random(grid * j, grid * j + grid));
-      d = img1.get(random(grid * i, grid * i + grid), random(grid * j, grid * j + grid));
-    }
-  }
-
-  for (i = 250; i < 750; i = i + grid) { // img is located between 250–750 on the x axis of canvas
-    for (j = 110; j < 610; j = j + grid) { // img is located between 110–610 on the y axis of canvas
-
-      noStroke();
-      fill(a);
-      rect(i + grid / 2, j + grid / 2, grid, grid, 5);
-      fill(b);
-      ellipse(i + grid / 2, j + grid / 2, grid - 5, grid - 5);
-      fill(c);
-      ellipse(i + grid / 2, j + grid / 2, grid - 10, grid - 10);
-      fill(d);
-      ellipse(i + grid / 2, j + grid / 2, grid - 15, grid - 15);
-
     }
   }
 }
