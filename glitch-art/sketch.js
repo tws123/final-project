@@ -98,7 +98,7 @@ function mousePressed() {
 }
 
 function sidePanel() {
-  
+
 }
 
 function chuckIt() {
@@ -117,11 +117,12 @@ function chuckIt() {
       fill(color1);
       rect(250 + grid / 2 + i * grid, 110 + grid / 2 + j * grid, grid, grid);
       fill(color2);
-      ellipse(250 + grid / 2 + i * grid, 110 + grid / 2 + j * grid, grid - 5, grid - 5);
+      rect(250 + grid / 2 + i * grid, 110 + grid / 2 + j * grid, grid, grid, random(5,15), random(5,15), random(5,15), random(5,15));
       fill(color3);
-      ellipse(250 + grid / 2 + i * grid, 110 + grid / 2 + j * grid, grid - 10, grid - 10);
+      ellipse(250 + grid / 2 + i * grid, 110 + grid / 2 + j * grid, grid /random(1.25, 1.5), grid /random(1.25, 1.5));
       fill(color4);
-      ellipse(250 + grid / 2 + i * grid, 110 + grid / 2 + j * grid, grid - 15, grid - 15);
+      ellipse(250 + grid / 2 + i * grid, 110 + grid / 2 + j * grid, grid /random(2, 3), grid / random(2, 3));
+
     }
   }
 }
