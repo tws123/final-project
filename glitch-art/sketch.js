@@ -4,9 +4,7 @@
   Last updated 3/4/17
   
   To Do:
-  -Get page switching if statements set up
-  -Set up true/false for cmyk() to make function run properly
-  -Add red filter to cmyk()
+
 
 */
 
@@ -56,13 +54,9 @@ function setup() {
   createCanvas(1000, 720);
   imageMode(CENTER);
   background(245, 245, 245);
-  image(portraitsSm[0], width / 5 + 2, marginTop + imgS / 2, imgS, imgS);
-  image(portraitsSm[1], width / 5 + 2, marginTop + imgS / 2 + imgS + 10, imgS, imgS); //123
-  image(portraitsSm[2], width / 5 + 2, marginTop + imgS / 2 + (2 * imgS) + 20, imgS, imgS); //208
-  image(portraitsSm[3], width / 5 + 2, marginTop + imgS / 2 + (3 * imgS) + 30, imgS, imgS); //293
-  image(portraitsSm[4], width / 5 + 2, marginTop + imgS / 2 + (4 * imgS) + 40, imgS, imgS); //378
-  image(portraitsSm[5], width / 5 + 2, marginTop + imgS / 2 + (5 * imgS) + 50, imgS, imgS); //463
-  // image(img12, imgS, imgS);
+  for (var i = 0; i < 6; i++) {
+    image(portraitsSm[i], width / 5 + 2, marginTop + imgS / 2 + (i * imgS) + (i * 10), imgS, imgS);
+  }
 
   image(img1, width / 2, height / 2, imgB, imgB); // main image
   slider = createSlider(0, 50, 25, 25); // (min, max, [default value], [step]) 
@@ -80,6 +74,7 @@ function draw() {
   filterBoxes(width - marginSide + 50, marginTop); // draw button 
   ellipseMode(CENTER);
   rectMode(CENTER);
+
 
 }
 
@@ -117,16 +112,15 @@ function chuckIt() {
       fill(color1);
       rect(250 + grid / 2 + i * grid, 110 + grid / 2 + j * grid, grid, grid);
       fill(color2);
-      rect(250 + grid / 2 + i * grid, 110 + grid / 2 + j * grid, grid, grid, random(5,15), random(5,15), random(5,15), random(5,15));
+      rect(250 + grid / 2 + i * grid, 110 + grid / 2 + j * grid, grid, grid, random(5, 15), random(5, 15), random(5, 15), random(5, 15));
       fill(color3);
-      ellipse(250 + grid / 2 + i * grid, 110 + grid / 2 + j * grid, grid /random(1.25, 1.5), grid /random(1.25, 1.5));
+      ellipse(250 + grid / 2 + i * grid, 110 + grid / 2 + j * grid, grid / random(1.25, 1.5), grid / random(1.25, 1.5));
       fill(color4);
-      ellipse(250 + grid / 2 + i * grid, 110 + grid / 2 + j * grid, grid /random(2, 3), grid / random(2, 3));
+      ellipse(250 + grid / 2 + i * grid, 110 + grid / 2 + j * grid, grid / random(2, 3), grid / random(2, 3));
 
     }
   }
 }
-
 
 function filterBoxes(x, y) {
   rectMode(CORNER);
@@ -145,3 +139,21 @@ function filterBoxes(x, y) {
   fill(0);
   text("Chuck It", x + w / 2, y + h / 2);
 }
+
+
+// // draws the states' images, green outlines  and texts on the right side
+// function thumbImage() {
+//   for (i = 0; i < 6; i++) {
+//     if (mouseX >= (i % 6 * 100) && mouseX < ((i % 6 * 100) + 100) && mouseY >= floor(i / 6) * 100 && mouseY < (floor(i / 6) * 100) + 100) {
+
+//       image(portraitsSm[0], 900, 250, 120, 120);
+//       // draws green strokes
+//       stroke(0, 255, 0);
+//       // sets strokes' weight
+//       strokeWeight(2);
+//       noFill();
+//       // sets the green strokes location and size
+//       rect((i % 6 * 100), floor(i / 6) * 100, 100, 100, 10);
+//     }
+//   }
+// }
