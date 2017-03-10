@@ -16,8 +16,9 @@ var marginSide = 250;
 //var filter = false;
 var grid; // size of square that grid is divided by
 var slider;
-var imgS = 100; // small image size
+var imgS = 75; // small image size
 var imgB = 500; // large image size
+
 
 
 
@@ -34,7 +35,7 @@ function preload() {
   img8 = loadImage('../images/mandelaWebThumb.jpg'); // thumbnail for side gallery
   img9 = loadImage('../images/monroeWebThumb.jpg'); // thumbnail for side gallery
   img10 = loadImage('../images/obamaWebThumb.jpg'); // thumbnail for side gallery
-  img11 = loadImage('../images/BowieWeb.jpg'); // thumbnail for side gallery
+  img11 = loadImage('../images/BowieWebThumb.jpg'); // thumbnail for side gallery
   img12 = loadImage('../images/einsteinWebThumb.jpg'); // thumbnail for side gallery 
 
   img13 = loadImage('../images/chuckProcess.jpg'); // bio photo
@@ -47,27 +48,31 @@ function preload() {
 }
 
 function setup() {
+  var imgBArray = new Array(img1, img2, img3, img4, img5, img6);
+  var imgSArray = new Array(img7, img8, img9, img10, img11, img12);
+
   createCanvas(1000, 720);
   imageMode(CENTER);
   background(245, 245, 245);
-  image(img7, width / 6 + 15, marginTop + 50, imgS, imgS);
-  image(img8, width / 6 + 15, marginTop + 150, imgS, imgS);
-  image(img9, width / 6 + 15, marginTop + 250, imgS, imgS);
-  image(img10, width / 6 + 15, marginTop + 350, imgS, imgS);
-  image(img11, width / 6 + 15, marginTop + 450, imgS, imgS);
+  image(imgSArray[0], width / 5 + 2, marginTop + imgS/2, imgS, imgS);
+  image(imgSArray[1], width / 5 + 2, marginTop + imgS/2 + imgS + 10, imgS, imgS); //123
+  image(imgSArray[2], width / 5 + 2, marginTop + imgS/2 + (2 * imgS) + 20, imgS, imgS); //208
+  image(imgSArray[3], width / 5 + 2, marginTop + imgS/2 + (3 * imgS) + 30, imgS, imgS); //293
+  image(imgSArray[4], width / 5 + 2, marginTop + imgS/2 + (4 * imgS) + 40, imgS, imgS); //378
+  image(imgSArray[5], width / 5 + 2, marginTop + imgS/2 + (5 * imgS) + 50, imgS, imgS); //463
   // image(img12, imgS, imgS);
   image(img1, width / 2, height / 2, imgB, imgB); // main image
   slider = createSlider(10, 50, 20, 10); // (min, max, [default value], [step]) 
   slider.position(width - marginSide + 50, marginTop + 80);
   textAlign(CENTER, CENTER);
   // fill(0);
-  // text("abstraction", width - marginSide + 120, marginTop + 120);
+  text("abstraction", width - marginSide + 120, marginTop + 120);
 
 }
 
 function draw() {
   fill(0);
-  text("abstraction", width - marginSide + 120, marginTop + 120);
+  // text("abstraction", width - marginSide + 120, marginTop + 120);
   grid = slider.value();
   filterBoxes(width - marginSide + 50, marginTop); // draw button 
   ellipseMode(CENTER);
