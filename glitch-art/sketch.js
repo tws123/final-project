@@ -20,27 +20,24 @@ for portaitsLg.
 •test and integrate changes
 •google slide deck and practice presentation
 •video
-
-
-
-
 */
 
 //var filter = false; // may need this later. 
+ind = 0; // holds index variable
 var marginTop = 110;
 var marginSide = 250;
 var grid; // size of square that grid is divided by
 var slider;
 var imgS = 75; // small image size
 var imgB = 500; // large image size
-var portraitsLg = []; // sets array of large portait images
-var portraitsSm = []; // sets array of thumbnail, small, portrait images
-
+//var portraitsLg = []; // sets array of large portait images
+//var portraitsSm = []; // sets array of thumbnail, small, portrait images
+//var page = []; // holds page 
+var xThumb = 165; // x position of thumbnails
 
 
 
 function preload() {
-
 
   img1 = loadImage('../images/friedaWeb.jpg'); // larger photo 
   img2 = loadImage('../images/mandelaWeb.jpg'); // larger photo 
@@ -67,15 +64,19 @@ function preload() {
 }
 
 function setup() {
-  ind = 0; // holds index variable
+
   createCanvas(1000, 720);
-  imageMode(CENTER);
   background(245, 245, 245); // sets background color
-  for (i = 0; i < 6; i++) { // places thumbnails sequentially
-    image(portraitsSm[i], width / 5 + 2, marginTop + imgS / 2 + (i * imgS) + (i * 10), imgS, imgS);
+  // for (i = 0; i < 6; i++) { // places thumbnails sequentially
+  //   image(portraitsSm[i], width / 5 + 2, marginTop + imgS / 2 + (i * imgS) + (i * 10), imgS, imgS);
+  // }
+
+  for (i = 0; i < 6; i++) {
+    image(portraitsSm[i], xThumb, marginTop + (i * imgS) + (i * 10), imgS, imgS);
   }
-  
-  image(portraitsLg[ind], width / 2, height / 2, imgB, imgB); // main image that's loaded. 
+
+  mainImage();
+
   slider = createSlider(0, 50, 25, 25); // (min, max, [default value], [step]) 
   slider.position(width - marginSide + 50, marginTop + 80); // places slider on page
   textAlign(CENTER, CENTER); // aligns text from center
@@ -94,14 +95,17 @@ function draw() {
 
 // chuck-its the image
 function mousePressed() {
-  if (mouseX > width - marginSide + 50 && mouseX < width - marginSide + 50 + 130 && mouseY > marginTop && mouseY < marginTop + 40) { // checks if mouse is within buttom dimensions
+  if (mouseX > width - marginSide + 50 && mouseX < width - marginSide + 50 + 130 &&
+    mouseY > marginTop && mouseY < marginTop + 40) { // checks if mouse is within buttom dimensions
     chuckIt(ind); // parameter is index of portraitLg array
+    //page = page + 1
+    //ind = ind + 1;
 
   } else if (mouseX > marginSide && mouseX < marginSide + imgS) {
+    //imageMode(CENTER);
+    //image(portraitsLg[ind], width / 2, height / 2, imgB, imgB);
     fill(0);
-    ellipse(10, 10, 1000, 1000);
-    // ind = ind + 1;
-    // console.log("it's working");
+    ellipse(250, 250, 800, 800);
   }
 }
 
@@ -110,10 +114,8 @@ function chuckIt(ind) {
   ellipseMode(CENTER);
   rectMode(CENTER);
 
-
   for (i = 0; i < 500 / grid; i++) {
     for (j = 0; j < 500 / grid; j++) {
-
 
       var color1 = portraitsLg[ind].get(random(grid * i, min(grid * i + grid, 500)), random(grid * j, min(grid * j + grid, 500)));
       var color2 = portraitsLg[ind].get(random(grid * i, min(grid * i + grid, 500)), random(grid * j, min(grid * j + grid, 500)));
@@ -152,6 +154,9 @@ function button(x, y) {
   text("Chuck It", x + w / 2, y + h / 2);
 }
 
-
-    //page = (page + 1) % 6; // switches pages
-    //background(255);
+function mainImage() {
+  imageMode(CENTER);
+  image(portraitsLg[ind], width / 2, height / 2, imgB, imgB); // main image that's loaded. 
+}
+//page = (page + 1) % 6; // switches pages
+//background(255);
