@@ -5,7 +5,6 @@ Chuck close is a contemporary painter who paints in a grid-like fashion,
 creating images that look hyperrealistic from a distance but, upon closer 
 inspection, are found to be made of discrete color units in loosely drawn
 dots, loops, and rectangles. 
-
 By Kelly & Tess
 Last updated 3/4/17
   
@@ -22,17 +21,13 @@ for portaitsLg.
 •video
 */
 
-//var filter = false; // may need this later. 
 ind = 0; // holds index variable
-var marginTop = 110;
+var marginTop = 150; //110
 var marginSide = 250;
 var grid; // size of square that grid is divided by
 var slider;
 var imgS = 75; // small image size
 var imgB = 500; // large image size
-//var portraitsLg = []; // sets array of large portait images
-//var portraitsSm = []; // sets array of thumbnail, small, portrait images
-//var page = []; // holds page 
 var xThumb = 165; // x position of thumbnails
 
 
@@ -65,48 +60,60 @@ function preload() {
 
 function setup() {
 
-  createCanvas(1000, 720);
+  createCanvas(1000, 800); // 720
   background(245, 245, 245); // sets background color
-  // for (i = 0; i < 6; i++) { // places thumbnails sequentially
-  //   image(portraitsSm[i], width / 5 + 2, marginTop + imgS / 2 + (i * imgS) + (i * 10), imgS, imgS);
-  // }
-
+  subtitle(width / 2, marginTop - 30);
+  logo(840, marginTop - 20);
   for (i = 0; i < 6; i++) {
     image(portraitsSm[i], xThumb, marginTop + (i * imgS) + (i * 10), imgS, imgS);
   }
 
   mainImage();
-
   slider = createSlider(0, 50, 25, 25); // (min, max, [default value], [step]) 
-  slider.position(width - marginSide + 50, marginTop + 80); // places slider on page
+  slider.position(width - marginSide + 30, marginTop + 80); // places slider on page
   textAlign(CENTER, CENTER); // aligns text from center
-  text("abstraction", width - marginSide + 120, marginTop + 120); // places slider text
+  text("Abstraction", width - marginSide + 100, marginTop + 120); // places slider text
 }
 
 function draw() {
   fill(0);
-  // text("abstraction", width - marginSide + 120, marginTop + 120);
   grid = max(10, slider.value()); // allows slider to start at 0 and increment by multiples of 25 w/out sq being too small.
-  button(width - marginSide + 50, marginTop); // draw button 
+  button(width - marginSide + 30, marginTop); // draw button 
   ellipseMode(CENTER);
   rectMode(CENTER);
 }
 
+function subtitle(x, y) {
+  textAlign(CENTER);
+  text("A photographic effect that turns ordinary photos into Chuck Close-style art", x, y);
+
+}
+
+function logo(x, y) {
+  push();
+  scale(0.5)
+  image(img16, x, y);
+  pop();
+
+
+}
 
 // chuck-its the image
 function mousePressed() {
   if (mouseX > width - marginSide + 50 && mouseX < width - marginSide + 50 + 130 &&
     mouseY > marginTop && mouseY < marginTop + 40) { // checks if mouse is within buttom dimensions
     chuckIt(ind); // parameter is index of portraitLg array
-    //page = page + 1
-    //ind = ind + 1;
 
-  } else if (mouseX > marginSide && mouseX < marginSide + imgS) {
-    //imageMode(CENTER);
-    //image(portraitsLg[ind], width / 2, height / 2, imgB, imgB);
-    fill(0);
-    ellipse(250, 250, 800, 800);
   }
+
+  for (i = 0; i < 6; i++) {
+    if (mouseX > xThumb && mouseX < xThumb + imgS && mouseY > marginTop + ((imgS + 10) * i) &&
+      mouseY < marginTop + ((imgS + 10) * (i + 1))) {
+      ind = i;
+      mainImage();
+    }
+  }
+
 }
 
 
@@ -117,20 +124,27 @@ function chuckIt(ind) {
   for (i = 0; i < 500 / grid; i++) {
     for (j = 0; j < 500 / grid; j++) {
 
-      var color1 = portraitsLg[ind].get(random(grid * i, min(grid * i + grid, 500)), random(grid * j, min(grid * j + grid, 500)));
-      var color2 = portraitsLg[ind].get(random(grid * i, min(grid * i + grid, 500)), random(grid * j, min(grid * j + grid, 500)));
-      var color3 = portraitsLg[ind].get(random(grid * i, min(grid * i + grid, 500)), random(grid * j, min(grid * j + grid, 500)));
-      var color4 = portraitsLg[ind].get(random(grid * i, min(grid * i + grid, 500)), random(grid * j, min(grid * j + grid, 500)));
+      var color1 = portraitsLg[ind].get(random(grid * i, min(grid * i + grid, 500)),
+        random(grid * j, min(grid * j + grid, 500)));
+      var color2 = portraitsLg[ind].get(random(grid * i, min(grid * i + grid, 500)),
+        random(grid * j, min(grid * j + grid, 500)));
+      var color3 = portraitsLg[ind].get(random(grid * i, min(grid * i + grid, 500)),
+        random(grid * j, min(grid * j + grid, 500)));
+      var color4 = portraitsLg[ind].get(random(grid * i, min(grid * i + grid, 500)),
+        random(grid * j, min(grid * j + grid, 500)));
 
       noStroke();
       fill(color1);
-      rect(250 + grid / 2 + i * grid, 110 + grid / 2 + j * grid, grid, grid);
+      rect(marginSide + grid / 2 + i * grid, marginTop + grid / 2 + j * grid, grid, grid);
       fill(color2);
-      rect(250 + grid / 2 + i * grid, 110 + grid / 2 + j * grid, grid, grid, random(5, 15), random(5, 15), random(5, 15), random(5, 15));
+      rect(marginSide + grid / 2 + i * grid, marginTop + grid / 2 + j * grid, grid, grid, random(5, 15),
+        random(5, 15), random(5, 15), random(5, 15));
       fill(color3);
-      ellipse(250 + grid / 2 + i * grid, 110 + grid / 2 + j * grid, grid / random(1.25, 1.5), grid / random(1.25, 1.5));
+      ellipse(marginSide + grid / 2 + i * grid, marginTop + grid / 2 + j * grid, grid / random(1.25, 1.5),
+        grid / random(1.25, 1.5));
       fill(color4);
-      ellipse(250 + grid / 2 + i * grid, 110 + grid / 2 + j * grid, grid / random(2, 3.5), grid / random(2, 3.5));
+      ellipse(marginSide + grid / 2 + i * grid, marginTop + grid / 2 + j * grid, grid / random(2, 3.5),
+        grid / random(2, 3.5));
 
     }
   }
@@ -141,7 +155,8 @@ function button(x, y) {
   var w = 130;
   var h = 40;
 
-  if (mouseIsPressed && mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) { // determine if cursor is over button
+  // determine if cursor is over button
+  if (mouseIsPressed && mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) {
     fill(150); // fill color for pressed state
   } else if (mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) {
     fill(200); // fill color for hover state
@@ -159,4 +174,3 @@ function mainImage() {
   image(portraitsLg[ind], width / 2, height / 2, imgB, imgB); // main image that's loaded. 
 }
 //page = (page + 1) % 6; // switches pages
-//background(255);
