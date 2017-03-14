@@ -22,25 +22,25 @@ var xThumb = 165; // x position of thumbnails
 
 // load all images
 function preload() {
-  img1 = loadImage('../images/friedaWeb.jpg'); // Larger photo 
-  img2 = loadImage('../images/mandelaWeb.jpg'); // Larger photo 
-  img3 = loadImage('../images/monroeWeb.jpg'); // Larger photo 
-  img4 = loadImage('../images/obamaWeb.jpg'); // Larger photo 
-  img5 = loadImage('../images/BowieWeb.jpg'); // Larger photo 
-  img6 = loadImage('../images/einsteinWeb.jpg'); // Larger photo 
+  img1 = loadImage('images/friedaWeb.jpg'); // Larger photo 
+  img2 = loadImage('images/mandelaWeb.jpg'); // Larger photo 
+  img3 = loadImage('images/monroeWeb.jpg'); // Larger photo 
+  img4 = loadImage('images/obamaWeb.jpg'); // Larger photo 
+  img5 = loadImage('images/BowieWeb.jpg'); // Larger photo 
+  img6 = loadImage('images/einsteinWeb.jpg'); // Larger photo 
 
-  img7 = loadImage('../images/friedaWebThumb.jpg'); // Thumbnail for side gallery
-  img8 = loadImage('../images/mandelaWebThumb.jpg'); // Thumbnail for side gallery
-  img9 = loadImage('../images/monroeWebThumb.jpg'); // Thumbnail for side gallery
-  img10 = loadImage('../images/obamaWebThumb.jpg'); // Thumbnail for side gallery
-  img11 = loadImage('../images/BowieWebThumb.jpg'); // Thumbnail for side gallery
-  img12 = loadImage('../images/einsteinWebThumb.jpg'); // Thumbnail for side gallery 
+  img7 = loadImage('images/friedaWebThumb.jpg'); // Thumbnail for side gallery
+  img8 = loadImage('images/mandelaWebThumb.jpg'); // Thumbnail for side gallery
+  img9 = loadImage('images/monroeWebThumb.jpg'); // Thumbnail for side gallery
+  img10 = loadImage('images/obamaWebThumb.jpg'); // Thumbnail for side gallery
+  img11 = loadImage('images/BowieWebThumb.jpg'); // Thumbnail for side gallery
+  img12 = loadImage('images/einsteinWebThumb.jpg'); // Thumbnail for side gallery 
 
-  img13 = loadImage('../images/chuckProcess.jpg'); // Bio photo (for use w/ future info page)
-  img14 = loadImage('../images/chuckPhotoCropped.jpg'); // Comparison1 photo (for future info page)
-  img15 = loadImage('../images/chuckPaintingCropped.jpg'); // Comparison2 photo (for future info page)
+  img13 = loadImage('images/chuckProcess.jpg'); // Bio photo (for use w/ future info page)
+  img14 = loadImage('images/chuckPhotoCropped.jpg'); // Comparison1 photo (for future info page)
+  img15 = loadImage('images/chuckPaintingCropped.jpg'); // Comparison2 photo (for future info page)
 
-  img16 = loadImage('../images/chuckItRed.png'); // Logo by itself (for future multipage app)
+  img16 = loadImage('images/chuckItRed.png'); // Logo by itself (for future multipage app)
 
   portraitsLg = new Array(img1, img2, img3, img4, img5, img6); // Array of the larger images to call
   portraitsSm = new Array(img7, img8, img9, img10, img11, img12); // Array of the thumbnails to draw on canvas
