@@ -26,14 +26,14 @@ function preload() {
   img2 = loadImage('images/mandelaWeb.jpg'); // Larger photo 
   img3 = loadImage('images/monroeWeb.jpg'); // Larger photo 
   img4 = loadImage('images/obamaWeb.jpg'); // Larger photo 
-  img5 = loadImage('images/BowieWeb.jpg'); // Larger photo 
+  img5 = loadImage('images/bowieWeb.jpg'); // Larger photo 
   img6 = loadImage('images/einsteinWeb.jpg'); // Larger photo 
 
   img7 = loadImage('images/friedaWebThumb.jpg'); // Thumbnail for side gallery
   img8 = loadImage('images/mandelaWebThumb.jpg'); // Thumbnail for side gallery
   img9 = loadImage('images/monroeWebThumb.jpg'); // Thumbnail for side gallery
   img10 = loadImage('images/obamaWebThumb.jpg'); // Thumbnail for side gallery
-  img11 = loadImage('images/BowieWebThumb.jpg'); // Thumbnail for side gallery
+  img11 = loadImage('images/bowieWebThumb.jpg'); // Thumbnail for side gallery
   img12 = loadImage('images/einsteinWebThumb.jpg'); // Thumbnail for side gallery 
 
   img13 = loadImage('images/chuckProcess.jpg'); // Bio photo (for use w/ future info page)
